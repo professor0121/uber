@@ -20,7 +20,7 @@ export const config = {
   port: parseInt(process.env.PORT || '3000', 10),
   
   dbEnv: {
-    url: getRequiredEnv('DATABASE_URL'),
+    url: getRequiredEnv('MONGO_URI'),
   },
   
   redisEnv: {

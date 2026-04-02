@@ -11,7 +11,7 @@ export const logServices = (port) => {
       Uptime: uptime,
     },
     {
-      Service: "PostgreSQL",
+      Service: "MONGODB",
       URL: "localhost:5432",
       Status: "✅ UP",
       Uptime: uptime,
