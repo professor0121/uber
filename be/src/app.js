@@ -8,6 +8,8 @@ import { connectDB } from "./lib/connectDb.js";
 configDotenv
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 async function startServer() {
   try {
