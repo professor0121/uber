@@ -6,6 +6,10 @@ let Redis;
 export const connectRedis = () => {
     if (!Redis) {
         Redis = new redis(redisEnv.url);
+        Redis.on('connect', () => {
+            console.log('Redis connected');
+        });
+
     }
     return Redis;
 }

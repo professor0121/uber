@@ -8,6 +8,7 @@ export const connectQueue = async () => {
     if (!connection) {
         connection = await amqp.connect(rabbitmqEnv.url);
         channel = await connection.createChannel();
+        console.log("RabbitMQ connected");
     }
 }
 

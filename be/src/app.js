@@ -2,7 +2,6 @@ import express from "express";
 import { port } from "./config/env.js";
 import { connectRedis } from "./services/redis.service.js";
 import { connectQueue } from "./services/rabbitmq.service.js";
-import {logServices} from './utils/services.logger.js'
 import AppRouter from "./routes/app.routes.js"
 import { configDotenv } from "dotenv";
 import { connectDB } from "./lib/connectDb.js";
@@ -18,7 +17,6 @@ async function startServer() {
     app.use("/api/v1",AppRouter)
     app.listen(port, () => {
       console.log("\nServer Started Successfully\n");
-      logServices(port);
     });
   } catch (error) {
     console.error("Server failed to start:", error);
