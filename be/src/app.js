@@ -1,6 +1,7 @@
 import express from "express";
 import { port } from "./config/env.js";
 import { connectDB } from "./services/postgres.service.js";
+import { connectPrisma } from "./services/prisma.service.js";
 import { connectRedis } from "./services/redis.service.js";
 import { connectQueue } from "./services/rabbitmq.service.js";
 import {logServices} from './utils/services.logger.js'
@@ -11,6 +12,7 @@ const app = express();
 async function startServer() {
   try {
     connectDB();
+    await connectPrisma();
     connectRedis();
     await connectQueue();
     app.use("/api/v1",AppRouter)
