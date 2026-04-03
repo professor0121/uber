@@ -7,6 +7,17 @@ export type LoginForm = {
   password: string;
 };
 
+export interface User {
+  _id: string;
+  email: string;
+}
+
+export interface AuthResponse {
+  user: User;
+  token: string;
+}
+
+
 export type RegisterForm = {
   name: string;
   email: string;
