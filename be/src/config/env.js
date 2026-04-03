@@ -18,23 +18,28 @@ const getRequiredEnv = (key) => {
 export const config = {
   env: process.env.NODE_ENV || 'development',
   port: parseInt(process.env.PORT || '3000', 10),
-  
+
   dbEnv: {
     url: getRequiredEnv('MONGO_URI'),
   },
-  
+
   redisEnv: {
     url: getRequiredEnv('REDIS_URL'),
   },
-  
+
   rabbitmqEnv: {
     url: getRequiredEnv('RABBITMQ_URL'),
     managementUrl: process.env.RABBITMQ_MANAGEMENT_URL || '',
   },
-  
+
+  jwtEnv: {
+    secret: getRequiredEnv('JWT_SECRET'),
+    expire: getRequiredEnv('JWT_EXPIRES_IN') || '1h'
+  },
+
   isProduction: process.env.NODE_ENV === 'production',
   isDevelopment: process.env.NODE_ENV === 'development',
 };
 
 // Export individual constants if preferred, though 'config' object is cleaner
-export const { PORT, dbEnv, redisEnv, rabbitmqEnv,port } = config;
+export const { PORT, dbEnv, redisEnv, rabbitmqEnv, port,jwtEnv } = config;
